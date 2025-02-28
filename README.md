@@ -29,7 +29,7 @@ npm install --include=dev
 
 #### Also includes dev dependencies. If we are setting the environmnt for development or testing
 
-#### run below script ,will set Node js environment to deveopment or test by running script. This will set to environment variable to development file
+#### By running below script, will set Node js environment to deveopment or test by running script. This will set to environment variable to development file
 
 ```bash
 $env:NODE_ENV="development"
@@ -37,13 +37,14 @@ $env:NODE_ENV="development"
 
 ### 2. Setup environment variables Configuration
 
-- create environment file use below command also create.env and .env.test file as per requiremrnts
+- create environment file use below command also create **.env** and **.env.test** file as per requirements.
+- For example:-
 
 ```bash
 echo "" >> .env.development
 ```
 
-- change database credentials In accordingly In node application inside .env file (dotenv) configuration for testing provide all variable including enc_key and enc_iv used to encrypt the contact number
+- change database credentials In accordingly In node application inside .env file (dotenv) configuration for testing provide all variable.
 - below are credential provided you have to change this accordingly as per you mysql db credentials
 
 ```plaintext
@@ -71,14 +72,16 @@ npm run start
 
 ### 9. API Endpoints
 
-- I have also attached postman_collection in same task. You can use that by importing that collection and i have provided all details as below to use app.
+- I have also attached postman_collection in same directory with name *postman_collection*. You can use that by importing that collection and i have provided all details as below to use app.
 
-#### List all api endpoints - user authentication:
+### 10. List all api endpoints
 
-- user authentication
+#### user authentication
+
+- POST -register user
 
 ```http
-/api/auth/register -register user
+/api/auth/register
 ```
 
 - Request json
@@ -92,8 +95,10 @@ npm run start
 }
 ```
 
+- POST -login user
+
 ```http
-/api/auth/login - login user
+/api/auth/login
 ```
 
 - Request json
@@ -105,10 +110,12 @@ npm run start
 }
 ```
 
-- Main task routes
+#### Main task routes
+
+- POST -create main task
 
 ```http
-POST- /api/tasks/ -create main task
+/api/tasks/
 ```
 
 - Request json
@@ -123,16 +130,22 @@ POST- /api/tasks/ -create main task
 }
 ```
 
-```http
-GET- /api/tasks?page=1&limit=10 -get list of all main task of logged in user
-```
+- GET -get list of all main task of logged in user
 
 ```http
-GET- /api/tasks/:id -get perticulat main task by id
+/api/tasks?page=1&limit=10
 ```
 
+- GET -get perticulat main task by id
+
 ```http
-PUT- /api/tasks/:id -update main task with ID
+/api/tasks/:id
+```
+
+- PUT -update main task with ID
+
+```http
+ /api/tasks/:id
 ```
 
 - Request json
@@ -147,14 +160,18 @@ PUT- /api/tasks/:id -update main task with ID
 }
 ```
 
+- DELETE -delete Main task with ID
+
 ```http
-DELETE- /api/tasks/:id -delete Main task with ID
+ /api/tasks/:id
 ```
 
-- Sub task routes
+#### Sub task routes
+
+- POST -create sub tasks
 
 ```http
-POST- /api/tasks/:mainTaskId/child-tasks -create sub tasks
+/api/tasks/:mainTaskId/child-tasks
 ```
 
 - Request json
@@ -169,12 +186,16 @@ POST- /api/tasks/:mainTaskId/child-tasks -create sub tasks
 }
 ```
 
-```http
-GET- /api/tasks/:mainTaskId/child-tasks?page=1&limit=10 - get all sub tasks of perticular main task
-```
+- GET -get all sub tasks of perticular main task
 
 ```http
-PUT- /api/tasks/:mainTaskId/child-tasks/:childTaskId -update sub task
+/api/tasks/:mainTaskId/child-tasks?page=1&limit=10
+```
+
+- PUT -update sub task
+
+```http
+/api/tasks/:mainTaskId/child-tasks/:childTaskId
 ```
 
 - Request json
@@ -189,6 +210,8 @@ PUT- /api/tasks/:mainTaskId/child-tasks/:childTaskId -update sub task
 }
 ```
 
+- DELETE -delete sub task
+
 ```http
-DELETE- /api/tasks/:mainTaskId/child-tasks/:childTaskId -delete sub task
+/api/tasks/:mainTaskId/child-tasks/:childTaskId
 ```
