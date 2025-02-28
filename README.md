@@ -72,7 +72,7 @@ npm run start
 
 ### 9. API Endpoints
 
-- I have also attached postman*collection in same directory with name "\_postman_collection*". You can use that by importing that collection and i have provided all details as below to use app.
+- I have also attached postman*collection in same directory with name "*postman_collection\*". You can use that by importing that collection and i have provided all details as below to use app.
 
 ### 10. List of All API Endpoints
 
