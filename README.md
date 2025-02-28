@@ -72,9 +72,9 @@ npm run start
 
 ### 9. API Endpoints
 
-- I have also attached postman_collection in same directory with name "_postman_collection_". You can use that by importing that collection and i have provided all details as below to use app.
+- I have also attached postman*collection in same directory with name "\_postman_collection*". You can use that by importing that collection and i have provided all details as below to use app.
 
-### 10. List all api endpoints
+### 10. List of All API Endpoints
 
 ---
 
@@ -227,3 +227,13 @@ npm run start
 ```
 
 ---
+
+### 11. CI/CD Pipeline process
+
+- **Trigger:** The pipeline runs automatically on every push or pull_request to the main branch.
+- **Checkout Code:** It fetches your repository’s code.
+- **Set up Node.js:** Installs the required Node.jsversion.
+- **Install Dependencies:** Installs all project dependencies using npm install.
+- **Run ESLint:** Lints the entire codebase for errors and warnings.
+- **Run Unit Tests:** Executes your tests to verify the application behavior.
+- **Additionally:** We can expand on this further, like adding build steps or deployment!.
