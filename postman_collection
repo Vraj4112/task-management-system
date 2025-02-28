@@ -1,0 +1,409 @@
+{
+	"info": {
+		"_postman_id": "c4c686d5-8ad8-43f7-833f-50206d20bfe1",
+		"name": "Task Aviansoft",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "33414361"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"vraj\",\r\n    \"email\": \"vraj@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"role\": \"USER\" //ADMIN or USER\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3002/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"vraj@gmail.com\",\r\n    \"password\": \"123456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3002/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "ceate main task",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6InZyYWoiLCJlbWFpbCI6InZyYWpAZ21haWwuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NDA3NTk4ODIsImV4cCI6MTc0MDc2MzQ4Mn0.Q9YBH2akgMgrEb_0Eb9QeDVRvVsV5ce-B0C2_HrWCaw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"test task\",\r\n    \"description\": \"this is a test task\",\r\n    \"status\": \"Pending\", // \"Pending\", \"In Progress\", \"Completed\"\r\n    \"dueDate\": \"2025-03-12\",\r\n    \"priority\": \"Low\" //\"Low\", \"Medium\", \"High\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3002/api/tasks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "main task list of user",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6InZyYWoiLCJlbWFpbCI6InZyYWpAZ21haWwuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NDA3NTk4ODIsImV4cCI6MTc0MDc2MzQ4Mn0.Q9YBH2akgMgrEb_0Eb9QeDVRvVsV5ce-B0C2_HrWCaw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/tasks?page=3&limit=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"tasks"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "3"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get main task by Id",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6InZyYWoiLCJlbWFpbCI6InZyYWpAZ21haWwuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NDA3NTk4ODIsImV4cCI6MTc0MDc2MzQ4Mn0.Q9YBH2akgMgrEb_0Eb9QeDVRvVsV5ce-B0C2_HrWCaw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/tasks/4",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"tasks",
+						"4"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update main ask",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6InZyYWoiLCJlbWFpbCI6InZyYWpAZ21haWwuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NDA3NTk4ODIsImV4cCI6MTc0MDc2MzQ4Mn0.Q9YBH2akgMgrEb_0Eb9QeDVRvVsV5ce-B0C2_HrWCaw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"vraj vraj\",\r\n    \"description\": \"this is a test task\",\r\n    \"status\": \"In Progress\", // \"Pending\", \"In Progress\", \"Completed\"\r\n    \"dueDate\": \"2025-03-20\",\r\n    \"priority\": \"Medium\" //\"Low\", \"Medium\", \"High\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3002/api/tasks/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"tasks",
+						"2"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete main task",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6InZyYWoiLCJlbWFpbCI6InZyYWpAZ21haWwuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NDA3NTk4ODIsImV4cCI6MTc0MDc2MzQ4Mn0.Q9YBH2akgMgrEb_0Eb9QeDVRvVsV5ce-B0C2_HrWCaw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/tasks/3",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"tasks",
+						"3"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create child task",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6InZyYWoiLCJlbWFpbCI6InZyYWpAZ21haWwuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NDA3NTk4ODIsImV4cCI6MTc0MDc2MzQ4Mn0.Q9YBH2akgMgrEb_0Eb9QeDVRvVsV5ce-B0C2_HrWCaw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"sub task test\",\r\n    \"description\": \"this is dev test\",\r\n    \"status\": \"Pending\", //\"Pending\", \"In Progress\", \"Completed\"\r\n    \"dueDate\": \"2025-03-11\",\r\n    \"priority\": \"Medium\" //\"Low\", \"Medium\", \"High\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3002/api/tasks/4/child-tasks",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"tasks",
+						"4",
+						"child-tasks"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get all child tasks of main task",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6InZyYWoiLCJlbWFpbCI6InZyYWpAZ21haWwuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NDA3NTk4ODIsImV4cCI6MTc0MDc2MzQ4Mn0.Q9YBH2akgMgrEb_0Eb9QeDVRvVsV5ce-B0C2_HrWCaw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/tasks/4/child-tasks?page=2&limit=2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"tasks",
+						"4",
+						"child-tasks"
+					],
+					"query": [
+						{
+							"key": "page",
+							"value": "2"
+						},
+						{
+							"key": "limit",
+							"value": "2"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "update child task",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6InZyYWoiLCJlbWFpbCI6InZyYWpAZ21haWwuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NDA3NTk4ODIsImV4cCI6MTc0MDc2MzQ4Mn0.Q9YBH2akgMgrEb_0Eb9QeDVRvVsV5ce-B0C2_HrWCaw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"title\": \"update update\",\r\n    \"description\": \"update is dev test\",\r\n    \"status\": \"In Progress\", //\"Pending\", \"In Progress\", \"Completed\"\r\n    \"dueDate\": \"2025-03-12\",\r\n    \"priority\": \"Medium\" //\"Low\", \"Medium\", \"High\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3002/api/tasks/4/child-tasks/1",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"tasks",
+						"4",
+						"child-tasks",
+						"1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "delete child task",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MywibmFtZSI6InZyYWoiLCJlbWFpbCI6InZyYWpAZ21haWwuY29tIiwicm9sZSI6IlVTRVIiLCJpYXQiOjE3NDA3NTk4ODIsImV4cCI6MTc0MDc2MzQ4Mn0.Q9YBH2akgMgrEb_0Eb9QeDVRvVsV5ce-B0C2_HrWCaw",
+							"type": "string"
+						}
+					]
+				},
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:3002/api/tasks/4/child-tasks/2",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3002",
+					"path": [
+						"api",
+						"tasks",
+						"4",
+						"child-tasks",
+						"2"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
