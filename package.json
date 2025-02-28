@@ -1,5 +1,6 @@
 {
   "name": "task-aviansoft",
+  "type": "commonjs",
   "version": "1.0.0",
   "description": "task aviansoft",
   "main": "server.js",
@@ -43,7 +44,9 @@
     "xss-clean": "^0.1.4"
   },
   "devDependencies": {
+    "@eslint/js": "^9.21.0",
     "eslint": "^9.21.0",
+    "globals": "^16.0.0",
     "jest": "^29.7.0",
     "supertest": "^7.0.0"
   }
