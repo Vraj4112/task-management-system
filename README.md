@@ -29,7 +29,7 @@ npm install --include=dev
 
 #### Also includes dev dependencies. If we are setting the environmnt for development or testing
 
-#### By running below script, will set Node js environment to development or test by running script. This will set to environment variable to development file
+#### By running below script, will set Node js environment to development or test by running script. This will set to environment variable to development in file. This is windows terminal command. It defers in macOS and Linux.
 
 ```bash
 $env:NODE_ENV="development"
