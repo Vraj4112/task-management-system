@@ -29,7 +29,7 @@ npm install --include=dev
 
 #### Also includes dev dependencies. If we are setting the environmnt for development or testing
 
-#### By running below script, will set Node js environment to deveopment or test by running script. This will set to environment variable to development file
+#### By running below script, will set Node js environment to development or test by running script. This will set to environment variable to development file
 
 ```bash
 $env:NODE_ENV="development"
@@ -75,8 +75,8 @@ npm run start
 - I have also attached postman_collection in same directory with name *postman_collection*. You can use that by importing that collection and i have provided all details as below to use app.
 
 ### 10. List all api endpoints
-
-#### user authentication
+---
+#### 1. user authentication
 
 - POST -register user
 
@@ -109,8 +109,9 @@ npm run start
   "password": "123456"
 }
 ```
-
-#### Main task routes
+---
+---
+#### 2. Main task routes
 
 - POST -create main task
 
@@ -165,8 +166,9 @@ npm run start
 ```http
  /api/tasks/:id
 ```
-
-#### Sub task routes
+---
+---
+#### 3. Sub task routes
 
 - POST -create sub tasks
 
@@ -215,3 +217,4 @@ npm run start
 ```http
 /api/tasks/:mainTaskId/child-tasks/:childTaskId
 ```
+---
