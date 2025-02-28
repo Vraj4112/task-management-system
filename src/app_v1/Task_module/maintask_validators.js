@@ -27,6 +27,33 @@ const validateCreateMainTask = (req, res, next) => {
   }
 };
 
+const validateUpdateMainTask = (req, res, next) => {
+  const schema = Joi.object({
+    title: Joi.string().min(3).max(100).required(),
+    description: Joi.string().optional(),
+    status: Joi.string()
+      .valid("Pending", "In Progress", "Completed")
+      .default("Pending"),
+    dueDate: Joi.date().optional(),
+    priority: Joi.string().valid("Low", "Medium", "High").default("Medium"),
+  });
+
+  const { error } = schema.validate(req.body);
+
+  if (error) {
+    return res.status(400).json({
+      success: false,
+      error: "Invalid data in request json.",
+      message: error.details.map((obj) => {
+        let key = obj.path[0];
+        return { [key]: obj.message.replace(/"/g, "") };
+      }),
+    });
+  } else {
+    next();
+  }
+};
+
 const validatePaginationQuery = (req, res, next) => {
   const schema = Joi.object({
     page: Joi.number().integer().min(1).default(1),
@@ -72,6 +99,7 @@ const validateMainTaskParams = (req, res, next) => {
 
 module.exports = {
   validateCreateMainTask,
+  validateUpdateMainTask,
   validatePaginationQuery,
   validateMainTaskParams,
 };

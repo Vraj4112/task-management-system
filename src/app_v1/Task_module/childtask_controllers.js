@@ -20,8 +20,12 @@ const createChildTask = async (req, res) => {
 
 const getChildTasks = async (req, res) => {
   try {
+    const { page = 1, limit = 10 } = req.query;
+    const offset = (page - 1) * limit;
     const tasks = await ChildTask.findAll({
       where: { mainTaskId: req.params.mainTaskId },
+      limit: parseInt(limit),
+      offset: parseInt(offset),
     });
     res.json(tasks);
   } catch (error) {

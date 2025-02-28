@@ -16,6 +16,7 @@ router.get(
 router.put(
   "/:id",
   validators.validateMainTaskParams,
+  validators.validateUpdateMainTask,
   controllers.updateMainTask
 );
 router.delete(
@@ -33,6 +34,7 @@ router.post(
 );
 router.get(
   "/:mainTaskId/child-tasks",
+  childtask_validators.validateChildTaskPaginationQuery,
   childtask_validators.validateChildTaskParamsMainTaskID,
   childtask_controllers.getChildTasks
 );

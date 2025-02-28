@@ -97,9 +97,32 @@ const validateChildTaskParamsMainTaskID = (req, res, next) => {
   }
 };
 
+const validateChildTaskPaginationQuery = (req, res, next) => {
+  const schema = Joi.object({
+    page: Joi.number().integer().min(1).default(1),
+    limit: Joi.number().integer().min(1).default(10),
+  });
+
+  const { error } = schema.validate(req.query);
+
+  if (error) {
+    return res.status(400).json({
+      success: false,
+      error: "Invalid data in request query.",
+      message: error.details.map((obj) => {
+        let key = obj.path[0];
+        return { [key]: obj.message.replace(/"/g, "") };
+      }),
+    });
+  } else {
+    next();
+  }
+};
+
 module.exports = {
   validateCreateChildTask,
   validateUpdateChildTask,
   validateChildTaskParams,
   validateChildTaskParamsMainTaskID,
+  validateChildTaskPaginationQuery,
 };
