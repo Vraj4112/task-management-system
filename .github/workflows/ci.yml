@@ -1,0 +1,36 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - main # Run the pipeline for the `main` branch
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  test-and-lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the code
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      # Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "16" # Specify your Node.js version
+
+      # Install dependencies
+      - name: Install Dependencies
+        run: npm install
+
+      # Run ESLint
+      - name: Run ESLint
+        run: npm run lint
+
+      # Run Unit Tests
+      - name: Run Unit Tests
+        run: npm test

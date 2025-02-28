@@ -1,10 +1,11 @@
 const jwt = require("jsonwebtoken");
-
-const secret = process.env.JWT_SECRET || "fv45De2Hcdf44WDl";
+const SECRET_KEY = process.env.JWT_SECRET || "fv45De2Hcdf44WDl";
 
 // Function to sign a JWT token
 const signToken = (user) => {
   const payload = {
+    id: user.id,
+    name: user.name,
     email: user.email,
     role: user.role,
   };
@@ -17,13 +18,14 @@ const signToken = (user) => {
 
 // Middleware to verify JWT token
 const validateToken = (token) => {
-  const payload = jwt.verify(token, SECRET_KEY, (err, decoded) => {
-    if (err) {
-      return res.status(403).json({ message: "Invalid or expired token" });
-    }
-  });
-
-  return payload;
+  try {
+    // Decode the JWT and return the user payload
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    return decoded; // Decoded payload should match your expectations
+  } catch (error) {
+    console.error("JWT validation failed:", error.message);
+    throw new Error("Invalid token");
+  }
 };
 
 module.exports = { signToken, validateToken };

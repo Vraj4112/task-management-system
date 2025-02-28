@@ -1,6 +1,7 @@
 const express = require("express");
 const app = express();
 
+const xss = require("xss-clean");
 const cors = require("cors");
 const compression = require("compression");
 const morgan = require("morgan");
@@ -24,6 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(compression({ threshold: 1024 }));
 
 helmetConfig(app); // Configure helmet
+app.use(xss()); // Prevent XSS attacks
 
 app.use(express.static(path.resolve("./public")));
 
