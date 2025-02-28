@@ -72,10 +72,12 @@ npm run start
 
 ### 9. API Endpoints
 
-- I have also attached postman_collection in same directory with name *postman_collection*. You can use that by importing that collection and i have provided all details as below to use app.
+- I have also attached postman_collection in same directory with name "_postman_collection_". You can use that by importing that collection and i have provided all details as below to use app.
 
 ### 10. List all api endpoints
+
 ---
+
 #### 1. user authentication
 
 - POST -register user
@@ -109,8 +111,11 @@ npm run start
   "password": "123456"
 }
 ```
+
 ---
+
 ---
+
 #### 2. Main task routes
 
 - POST -create main task
@@ -166,8 +171,11 @@ npm run start
 ```http
  /api/tasks/:id
 ```
+
 ---
+
 ---
+
 #### 3. Sub task routes
 
 - POST -create sub tasks
@@ -217,4 +225,5 @@ npm run start
 ```http
 /api/tasks/:mainTaskId/child-tasks/:childTaskId
 ```
+
 ---
