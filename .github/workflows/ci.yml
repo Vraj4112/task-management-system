@@ -23,6 +23,17 @@ jobs:
         with:
           node-version: "20" # Specify your Node.js version
 
+      #Set Environment Variables in GitHub Actions
+      - name: Set Environment Variables
+        run: |
+          echo "NODE_ENV=test" >> $GITHUB_ENV
+          echo "DB_USERNAME=${{ secrets.DB_USERNAME }}" >> $GITHUB_ENV
+          echo "DB_PASSWORD=${{ secrets.DB_PASSWORD }}" >> $GITHUB_ENV
+          echo "DB_NAME=${{ secrets.DB_NAME }}" >> $GITHUB_ENV
+          echo "DB_HOST=${{ secrets.DB_HOST }}" >> $GITHUB_ENV
+          echo "DB_PORT=${{ secrets.DB_PORT }}" >> $GITHUB_ENV
+          echo "JWT_SECRET=${{ secrets.JWT_SECRET }}" >> $GITHUB_ENV
+
       # Install dependencies
       - name: Install Dependencies
         run: npm install --include=dev
@@ -32,5 +43,5 @@ jobs:
         run: npm run lint
 
       # Run Unit Tests -as of now database not connected to cloud
-      #- name: Run Unit Tests
-      #  run: npm run test
+      - name: Run Unit Tests
+        run: npm run test
