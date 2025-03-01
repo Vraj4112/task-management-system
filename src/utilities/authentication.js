@@ -1,5 +1,11 @@
 const jwt = require("jsonwebtoken");
-const SECRET_KEY = process.env.JWT_SECRET || "fv45De2Hcdf44WDl";
+const SECRET_KEY = process.env.JWT_SECRET;
+
+console.log("check secrete key", SECRET_KEY);
+
+if (!SECRET_KEY) {
+  throw new Error("JWT secret or public key must be provided");
+}
 
 // Function to sign a JWT token
 const signToken = (user) => {
