@@ -12,7 +12,7 @@ const initAssociations = async () => {
   });
   ChildTask.belongsTo(MainTask, { foreignKey: "mainTaskId" });
 
-  MainTask.afterUpdate(async (mainTask, options) => {
+  MainTask.afterUpdate(async (mainTask) => {
     if (mainTask.status === "Completed") {
       await ChildTask.update(
         { status: "Completed" },

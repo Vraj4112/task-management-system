@@ -4,13 +4,18 @@ const ChildTask = require("../../../database/models/childtask");
 const createChildTask = async (req, res) => {
   try {
     const { title, description, status, dueDate, priority } = req.body;
-    const mainTask = await MainTask.findByPk(req.params.mainTaskId);
+    const mainTaskId = req.params.mainTaskId;
+    const mainTask = await MainTask.findByPk(mainTaskId);
     if (!mainTask)
       return res.status(404).json({ error: "Main task not found" });
 
     const childTask = await ChildTask.create({
-      ...req.body,
-      mainTaskId: req.params.mainTaskId,
+      title,
+      description,
+      status,
+      dueDate,
+      priority,
+      mainTaskId,
     });
     res.status(201).json(childTask);
   } catch (error) {

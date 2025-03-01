@@ -11,7 +11,7 @@ beforeAll(async () => {
 let authToken;
 
 beforeEach(async () => {
-  const response = await request(app).post("/api/auth/register").send({
+  await request(app).post("/api/auth/register").send({
     name: "taskuser",
     email: "taskuser@example.com",
     password: "password123",

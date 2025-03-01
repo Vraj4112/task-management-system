@@ -35,7 +35,7 @@ let dbConnect = async function () {
   try {
     let sqlConnect = await mysql.createConnection(localConfig);
     console.log("Connected as id " + sqlConnect.threadId);
-    const [results, fields] = await sqlConnect.execute(schema_query_string);
+    const [results] = await sqlConnect.execute(schema_query_string);
     if (results) {
       console.log(`Schema ${process.env.DATABASE} created or already exists.`);
     }

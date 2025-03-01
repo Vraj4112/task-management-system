@@ -3,9 +3,14 @@ const MainTask = require("../../../database/models/maintask");
 const createMainTask = async (req, res) => {
   try {
     const { title, description, status, dueDate, priority } = req.body;
+    const userId = req.user.id;
     const mainTask = await MainTask.create({
-      ...req.body,
-      userId: req.user.id,
+      title,
+      description,
+      status,
+      dueDate,
+      priority,
+      userId,
     });
     res.status(201).json({ message: "task successfully created", mainTask });
   } catch (error) {
