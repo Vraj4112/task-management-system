@@ -1,31 +1,39 @@
 const express = require("express");
 const router = express.Router();
-const controllers = require("./maintask_controllers");
-const validators = require("./maintask_validators");
-const childtask_controllers = require("./childtask_controllers");
-const childtask_validators = require("./childtask_validators");
+const maintask_controllers = require("./Main_Tasks/controllers");
+const maintask_validators = require("./Main_Tasks/validators");
+const childtask_controllers = require("./Child_Tasks/controllers");
+const childtask_validators = require("./Child_Tasks/validators");
 
-//all routes Main task
-router.post("/", validators.validateCreateMainTask, controllers.createMainTask);
-router.get("/", validators.validatePaginationQuery, controllers.getMainTasks);
+//All routes Main task
+router.post(
+  "/",
+  maintask_validators.validateCreateMainTask,
+  maintask_controllers.createMainTask
+);
+router.get(
+  "/",
+  maintask_validators.validatePaginationQuery,
+  maintask_controllers.getMainTasks
+);
 router.get(
   "/:id",
-  validators.validateMainTaskParams,
-  controllers.getMainTaskById
+  maintask_validators.validateMainTaskParams,
+  maintask_controllers.getMainTaskById
 );
 router.put(
   "/:id",
-  validators.validateMainTaskParams,
-  validators.validateUpdateMainTask,
-  controllers.updateMainTask
+  maintask_validators.validateMainTaskParams,
+  maintask_validators.validateUpdateMainTask,
+  maintask_controllers.updateMainTask
 );
 router.delete(
   "/:id",
-  validators.validateMainTaskParams,
-  controllers.deleteMainTask
+  maintask_validators.validateMainTaskParams,
+  maintask_controllers.deleteMainTask
 );
 
-//all routes Child task
+//All routes Child task
 router.post(
   "/:mainTaskId/child-tasks",
   childtask_validators.validateChildTaskParamsMainTaskID,

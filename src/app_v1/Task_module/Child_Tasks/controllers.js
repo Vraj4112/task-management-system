@@ -1,5 +1,5 @@
-const MainTask = require("../../database/models/maintask");
-const ChildTask = require("../../database/models/childtask");
+const MainTask = require("../../../database/models/maintask");
+const ChildTask = require("../../../database/models/childtask");
 
 const createChildTask = async (req, res) => {
   try {

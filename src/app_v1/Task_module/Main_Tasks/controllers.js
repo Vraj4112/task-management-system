@@ -1,4 +1,4 @@
-const MainTask = require("../../database/models/maintask");
+const MainTask = require("../../../database/models/maintask");
 
 const createMainTask = async (req, res) => {
   try {
